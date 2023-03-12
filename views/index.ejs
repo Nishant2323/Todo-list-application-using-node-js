@@ -13,15 +13,18 @@
     </div>
    <div class="box">
         <% for(var i=0;i<newitem.length ;i++) {%>
-        <div class="item">
-            <input type="checkbox">
-            <p><%= newitem[i] %></p>
-        </div>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" onchange="this.form.submit()" value="<%=newitem[i]._id%>">
+                    <p><%= newitem[i].name %></p>
+                </div>
+                <input type="hidden" name="listName" value="<%= kindofday %>"></input>
+            </form>
          <% } %>
    
     <form action="/" method="post">
             <input type="text" name="i" placeholder="enter your item">
-            <button type="submit" name="<%= kindofday %>">+</button>
+            <button type="submit" name="append" value="<%=kindofday%>">+</button>
         </form>
    </div>
     
